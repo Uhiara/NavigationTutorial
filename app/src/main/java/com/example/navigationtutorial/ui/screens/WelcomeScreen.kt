@@ -34,6 +34,7 @@ import com.example.navigationtutorial.ui.navgraph.Routes
 fun WelcomeScreen(
     navController: NavHostController,
     modifier: Modifier = Modifier,
+    onLoginClicked: () -> Unit
 ) {
     Surface(
         modifier.fillMaxSize(),
@@ -94,10 +95,7 @@ fun WelcomeScreen(
                 CommonButton(
                     modifier = modifier.fillMaxWidth(),
                     text = "LOGIN",
-                    onClick = {
-                        navController.popBackStack()
-                        navController.navigate(Routes.INDEX)
-                    }
+                    onClick = onLoginClicked
                 )
 
                 Spacer(modifier = Modifier.padding(8.dp))
@@ -119,5 +117,5 @@ fun WelcomeScreen(
 @Preview
 @Composable
 fun WelcomeScreenPreview() {
-    WelcomeScreen(rememberNavController())
+    WelcomeScreen(rememberNavController(), onLoginClicked = {})
 }
